@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>:: Cewe Portal Image Gallery ::</title>
+    <link rel="stylesheet" type="text/css" href="/dev/css/default.css" />
+    <!--<link rel="stylesheet" type="text/css" href="/SVN/Photobook/DE/css/style_basic_cfb09_de.css" />-->
+    <link rel="stylesheet" type="text/css" href="cwpGallery.css" />
+    <script type="text/javascript" src="mootools-core-1.3-full-nocompat-yc.js"></script>
+    <script type="text/javascript" src="mootools-more.js"></script>
+    <script type="text/javascript" src="cwpGallery.js"></script>
+    <script type="text/javascript">
+        window.addEvent('domready', function(){
+            $$('.product-gallery').each(function(el){
+                new cwpGallery(el, {
+                    fadeOutDisabledButtons: true,
+                    slideOpacity: .75
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    
+    <div class="product-gallery">
+        <div class="gallery-image-holder">
+            <img src="images/cwde-fotobuch-xl-details-bindung-leinen-creme.png" />
+        </div>
+        <ul>
+			<li>
+				<a href="images/cwde-fotobuch-xl-details-bindung-leinen-creme.png">
+					<img src="images/cwde-fotobuch-xl-thumb-bindung-leinen-creme.png" alt="" longdesc="Write something usefull" />
+				</a>
+			</li>
+			<li>
+				<a href="images/cwde-fotobuch-xl-details-einband-hardcover.png">
+					<img src="images/cwde-fotobuch-xl-thumb-einband-hardcover.png" alt="" longdesc="Write something usefull" />
+				</a>
+			</li>
+			<li>
+				<a href="images/cwde-fotobuch-xl-details-einband-kunstleder-braun.png">
+					<img src="images/cwde-fotobuch-xl-thumb-einband-kunstleder-braun.png" alt="" longdesc="Write something usefull" />
+				</a>
+			</li>
+			<li>
+				<a href="images/cwde-fotobuch-xl-details-einband-kunstleder-creme.png">
+					<img src="images/cwde-fotobuch-xl-thumb-einband-kunstleder-creme.png" alt="" longdesc="Write something usefull" />
+				</a>
+			</li>
+			<li>
+				<a href="images/cwde-fotobuch-xl-details-einband-kunstleder-schwarz.png">                
+				    <img src="images/cwde-fotobuch-xl-thumb-einband-kunstleder-schwarz.png" />
+				</a>
+			</li>
+			<li>
+				<a href="images/cwde-fotobuch-xl-details-einband-leinen-blau.png">                
+					<img src="images/cwde-fotobuch-xl-thumb-einband-leinen-blau.png" alt="" longdesc="Write something usefull" />
+				</a>
+			</li>
+			<li>
+				<a href="images/cwde-fotobuch-xl-details-einband-leinen-creme.png">                
+					<img src="images/cwde-fotobuch-xl-thumb-einband-leinen-creme.png" />
+				</a>
+			</li>
+			<li>
+				<a href="images/cwde-fotobuch-xl-details-einband-leinen-rot.png">                
+					<img src="images/cwde-fotobuch-xl-thumb-einband-leinen-rot.png" alt="" longdesc="Write something usefull" />
+				</a>
+			</li>
+			<li>
+				<a href="images/cwde-fotobuch-xl-details-einband-leinen-schwarz.png">                
+					<img src="images/cwde-fotobuch-xl-thumb-einband-leinen-schwarz.png" alt="" longdesc="Write something usefull" />
+				</a>
+			</li>
+			<li>
+				<a href="images/cwde-fotobuch-xl-details-einband-leinen-silber.png">                
+					<img src="images/cwde-fotobuch-xl-thumb-einband-leinen-silber.png" alt="" longdesc="Write something usefull" />
+				</a>
+			</li>
+			<li>
+				<a href="images/cwde-fotobuch-xl-details-offen-hochzeit.png">
+					<img src="images/cwde-fotobuch-xl-thumb-offen-hochzeit.png" />
+				</a>
+			</li>
+        </ul>
+    </div>
+    
+</body>
+</html>

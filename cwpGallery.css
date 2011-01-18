@@ -1,0 +1,167 @@
+#cwpGallery {
+	background: #F2DEC1;
+	padding: 10px;
+	}
+	#cwpGallery,
+	#cwpGallery .image-holder,
+	#cwpGallery .image-holder div div {
+		width: 800px;
+	}
+	#cwpGallery div.image-holder {
+		overflow: hidden;
+		position: relative;
+		}
+		#cwpGallery .image-holder,
+		#cwpGallery .image-holder div div {
+			height: 600px;
+		}
+		#cwpGallery .image-holder .images {
+			height: 100%;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			z-index: 1;
+			}
+			#cwpGallery div.image-holder div div {
+				float: left;
+				position: relative;
+				overflow: hidden;
+				}
+				#cwpGallery .image-title {
+					background: #fff;
+					background: rgba(255, 255, 255, .7);
+					color: #626262;
+					display: block;
+					overflow: hidden;
+					position: absolute;
+					}
+					#cwpGallery .image-title span {
+						display: block;
+						margin: 6px 8px;
+					}
+
+		#cwpGallery .control-holder {
+			cursor: pointer;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			z-index: 3;
+			}
+			#cwpGallery .image-holder:hover .control-holder span {
+				display: block;
+			}
+			#cwpGallery .control-holder span {
+				background-color: #fff;
+				background-image: url(cwpGallery-arrows.png);
+				background-repeat: no-repeat;
+				display: none;
+				height: 30px;
+				margin-top: -15px;
+				position: absolute;
+				top: 50%;
+				width: 30px;
+				z-index: 2;
+			}
+			#cwpGallery .control-next {
+				background-position: 8px -149px;
+				border-radius: 4px 0 0 4px;
+				-moz-border-radius: 4px 0 0 4px;
+				-webkit-border-radius: 4px 0 0 4px;
+				box-shadow: -1px 1px 2px rgba(100, 100, 100, .7);
+				-moz-box-shadow: -1px 1px 2px rgba(100, 100, 100, .7);
+				-webkit-box-shadow: -1px 1px 2px rgba(100, 100, 100, .7);
+				right: 0;
+			}
+			#cwpGallery .control-previous {
+				background-position: 8px -39px;
+				border-radius: 0 4px 4px 0;
+				-moz-border-radius: 0 4px 4px 0;
+				-webkit-border-radius: 0 4px 4px 0;
+				box-shadow: 1px 1px 2px rgba(100, 100, 100, .7);
+				-moz-box-shadow: 1px 1px 2px rgba(100, 100, 100, .7);
+				-webkit-box-shadow: 1px 1px 2px rgba(100, 100, 100, .7);
+				left: 0;
+			}
+			
+		#cwpGallery .image-holder .loading {
+			background: #fff url(cwpGallery-indicator.gif) no-repeat 50% 50%;
+			border-radius: 4px;
+			-moz-border-radius: 4px;
+			-webkit-border-radius: 4px;
+			box-shadow: 0 0 2px rgba(100, 100, 100, .7);
+			-moz-box-shadow: 0 0 2px rgba(100, 100, 100, .7);
+			-webkit-box-shadow: 0 0 2px rgba(100, 100, 100, .7);
+			height: 40px;
+			left: 50%;
+			margin: -20px 0 0 -20px;
+			position: absolute;
+			top: 50%;
+			width: 40px;
+			z-index: 4;
+		}
+	
+	#cwpGallery div.thumbnail-holder {
+		margin: 10px 0;
+		position: relative;
+		overflow: hidden;
+		}
+		#cwpGallery div.thumbnail-holder,
+		#cwpGallery .thumbnail-holder div {
+			height: 110px;
+		}
+		#cwpGallery .thumbnail-holder div {
+			margin: 0 20px;
+			overflow: hidden;
+			position: relative;
+		}
+		#cwpGallery ul {
+			left: 0;
+			list-style: none;
+			margin: 0;
+			position: absolute;
+			top: 0;
+			}
+			#cwpGallery li {
+				background: #aaa;
+				float: left;
+				margin: 0 5px 0 0;
+				padding: 2px;
+				}
+				#cwpGallery li.active {
+					background: #333;
+					}
+					#cwpGallery li img {
+						display: block;
+					}
+			#cwpGallery .scroll-left,
+			#cwpGallery .scroll-right {
+				background-image: url(cwpGallery-arrows.png);
+				background-repeat: no-repeat;
+				cursor: pointer;
+				display: block;
+				height: 110px;
+				position: absolute;
+				top: 0;
+				width: 16px;
+			}
+			#cwpGallery .scroll-left {
+				background-position: top left;
+				left: 0;
+			}
+			#cwpGallery .scroll-right {
+				background-position: bottom left;
+				right: 0;
+			}
+			
+		.center {
+			background: black;
+			display: block;
+			height: 110px;
+			left: 50%;
+			margin-left: -1px;
+			position: absolute;
+			top: 0;
+			width: 2px;
+			z-index: 3;
+		}
