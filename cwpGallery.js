@@ -159,9 +159,9 @@ var cwpGallery = new Class({
 
 		this.thumbnails[0].store('spacing', spacing);
 
-		var ul = this.thumbnailHolder.getElement('ul');
+		var ul = this.element.getElement('ul');
 
-		new Element('div').adopt(ul).inject(this.thumbnailHolder);
+		this.thumbnailHolder = new Element('div.thumbnail-holder').adopt(ul).inject(this.element);
 
 		ul.setStyle('width', thumbnailWidth*this.thumbnails.length);
 
@@ -171,8 +171,7 @@ var cwpGallery = new Class({
 			return;
 		}
 
-		var leftControl = new Element('span', {
-			'class': 'scroll-left',
+		var leftControl = new Element('span.scroll-left', {
 			events: {
 				click: function(){
 					this.scrollThumbnails(leftControl);
@@ -180,8 +179,7 @@ var cwpGallery = new Class({
 			}
 		}).inject(this.thumbnailHolder);
 
-		var controlRight = new Element('span', {
-			'class': 'scroll-right',
+		var controlRight = new Element('span.scroll-right', {
 			events: {
 				click: function(){
 					this.scrollThumbnails(controlRight);

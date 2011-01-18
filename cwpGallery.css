@@ -1,21 +1,24 @@
-#cwpGallery {
+.product-gallery {
 	background: #F2DEC1;
 	padding: 10px;
 	}
-	#cwpGallery,
-	#cwpGallery .image-holder,
-	#cwpGallery .image-holder div div {
-		width: 800px;
+    .gallery-image-holder {
+        height: 380px;
+    }
+	.product-gallery,
+	.product-gallery .image-holder,
+	.product-gallery .image-holder div div {
+		width: 600px;
 	}
-	#cwpGallery div.image-holder {
+	.product-gallery div.image-holder {
 		overflow: hidden;
 		position: relative;
 		}
-		#cwpGallery .image-holder,
-		#cwpGallery .image-holder div div {
+		.product-gallery .image-holder,
+		.product-gallery .image-holder div div {
 			height: 600px;
 		}
-		#cwpGallery .image-holder .images {
+		.product-gallery .image-holder .images {
 			height: 100%;
 			left: 0;
 			position: absolute;
@@ -23,12 +26,12 @@
 			width: 100%;
 			z-index: 1;
 			}
-			#cwpGallery div.image-holder div div {
+			.product-gallery div.image-holder div div {
 				float: left;
 				position: relative;
 				overflow: hidden;
 				}
-				#cwpGallery .image-title {
+				.product-gallery .image-title {
 					background: #fff;
 					background: rgba(255, 255, 255, .7);
 					color: #626262;
@@ -36,22 +39,22 @@
 					overflow: hidden;
 					position: absolute;
 					}
-					#cwpGallery .image-title span {
+					.product-gallery .image-title span {
 						display: block;
 						margin: 6px 8px;
 					}
 
-		#cwpGallery .control-holder {
+		.product-gallery .control-holder {
 			cursor: pointer;
 			height: 100%;
 			position: absolute;
 			top: 0;
 			z-index: 3;
 			}
-			#cwpGallery .image-holder:hover .control-holder span {
+			.product-gallery .image-holder:hover .control-holder span {
 				display: block;
 			}
-			#cwpGallery .control-holder span {
+			.product-gallery .control-holder span {
 				background-color: #fff;
 				background-image: url(cwpGallery-arrows.png);
 				background-repeat: no-repeat;
@@ -63,7 +66,7 @@
 				width: 30px;
 				z-index: 2;
 			}
-			#cwpGallery .control-next {
+			.product-gallery .control-next {
 				background-position: 8px -149px;
 				border-radius: 4px 0 0 4px;
 				-moz-border-radius: 4px 0 0 4px;
@@ -73,7 +76,7 @@
 				-webkit-box-shadow: -1px 1px 2px rgba(100, 100, 100, .7);
 				right: 0;
 			}
-			#cwpGallery .control-previous {
+			.product-gallery .control-previous {
 				background-position: 8px -39px;
 				border-radius: 0 4px 4px 0;
 				-moz-border-radius: 0 4px 4px 0;
@@ -84,7 +87,7 @@
 				left: 0;
 			}
 			
-		#cwpGallery .image-holder .loading {
+		.product-gallery .image-holder .loading {
 			background: #fff url(cwpGallery-indicator.gif) no-repeat 50% 50%;
 			border-radius: 4px;
 			-moz-border-radius: 4px;
@@ -101,41 +104,41 @@
 			z-index: 4;
 		}
 	
-	#cwpGallery div.thumbnail-holder {
+	div.thumbnail-holder {
 		margin: 10px 0;
 		position: relative;
 		overflow: hidden;
 		}
-		#cwpGallery div.thumbnail-holder,
-		#cwpGallery .thumbnail-holder div {
+		div.thumbnail-holder,
+		.thumbnail-holder div {
 			height: 110px;
 		}
-		#cwpGallery .thumbnail-holder div {
+		.thumbnail-holder div {
 			margin: 0 20px;
 			overflow: hidden;
 			position: relative;
 		}
-		#cwpGallery ul {
+		.thumbnail-holder ul {
 			left: 0;
 			list-style: none;
 			margin: 0;
 			position: absolute;
 			top: 0;
 			}
-			#cwpGallery li {
+			.thumbnail-holder li {
 				background: #aaa;
 				float: left;
 				margin: 0 5px 0 0;
 				padding: 2px;
 				}
-				#cwpGallery li.active {
+				.thumbnail-holder li.active {
 					background: #333;
 					}
-					#cwpGallery li img {
+					.thumbnail-holder li img {
 						display: block;
 					}
-			#cwpGallery .scroll-left,
-			#cwpGallery .scroll-right {
+			.thumbnail-holder .scroll-left,
+			.thumbnail-holder .scroll-right {
 				background-image: url(cwpGallery-arrows.png);
 				background-repeat: no-repeat;
 				cursor: pointer;
@@ -145,11 +148,11 @@
 				top: 0;
 				width: 16px;
 			}
-			#cwpGallery .scroll-left {
+			.thumbnail-holder .scroll-left {
 				background-position: top left;
 				left: 0;
 			}
-			#cwpGallery .scroll-right {
+			.thumbnail-holder .scroll-right {
 				background-position: bottom left;
 				right: 0;
 			}
