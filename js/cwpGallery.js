@@ -18,7 +18,6 @@ provides:
 ...
 */
 
-
 var cwpGallery = new Class({
 
 	Implements: Options,
@@ -42,7 +41,7 @@ var cwpGallery = new Class({
 		// Image container
 		this.imageHolder = this.element.getElement('div');
 		// Thumbnail container
-		this.thumbnailHolder = this.element.getElement('.thumbnail-holder');
+		this.thumbnailHolder = null;
 		// List elements
 		this.thumbnails = this.element.getElements('li');
 
@@ -57,7 +56,7 @@ var cwpGallery = new Class({
 		}
 		this.loadImage(this.thumbnails[0].getElement('a'), 0);
 	},
-	
+
 	attachKeyEvents: function()
 	{
 		$(document.body).addEvent('keydown', function(e){
@@ -90,7 +89,7 @@ var cwpGallery = new Class({
 	createControls: function()
 	{
 		var width = (this.imageHolder.getWidth() / 3).round();
-		
+
 		new Element('span', {
 			'class': 'control-holder',
 			events: {
@@ -190,9 +189,7 @@ var cwpGallery = new Class({
 
 	insertImage: function(image ,i)
 	{
-		var target = this.imageHolder.getElement('div');
-
-		var imgDiv = target.getElement('div');
+		var target = this.element.getElement('div');
 
 		// insert after current image
 		if(i > this.currentImage)
@@ -215,7 +212,7 @@ var cwpGallery = new Class({
 
 		new Element('div', {
 			styles: styles
-		}).adopt(image).inject(imgDiv, where);
+		}).adopt(image).inject(target, where);
 
 		this.centerImage(image);
 
@@ -262,8 +259,6 @@ var cwpGallery = new Class({
 		this.loader.fade(1);
 
 		var target = this.imageHolder.getElement('div');
-
-		var imgDiv = target.getElement('div');
 
 		var image = new Asset.image(el.get('href'), {
 			title: el.getElement('img').get('title'),
@@ -323,7 +318,6 @@ var cwpGallery = new Class({
 		{
 			coordinates = ul.getElement('.active').getCoordinates(ul);
 			left = (coordinates.left - center + (coordinates.width / 2).round());
-
 		}
 		if(coordinates.left < center || to < 0)
 		{

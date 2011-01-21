@@ -2,23 +2,20 @@
 	background: #F2DEC1;
 	padding: 10px;
 	}
-    .gallery-image-holder {
-        height: 380px;
-    }
 	.product-gallery,
-	.product-gallery .image-holder,
-	.product-gallery .image-holder div div {
+	.product-gallery .gallery-image-holder,
+	.product-gallery .gallery-image-holder div div {
 		width: 600px;
 	}
-	.product-gallery div.image-holder {
+	.product-gallery div.gallery-image-holder {
 		overflow: hidden;
 		position: relative;
 		}
-		.product-gallery .image-holder,
-		.product-gallery .image-holder div div {
-			height: 600px;
+		.product-gallery .gallery-image-holder,
+		.product-gallery .gallery-image-holder div div {
+			height: 380px;
 		}
-		.product-gallery .image-holder .images {
+		.product-gallery .gallery-image-holder .images {
 			height: 100%;
 			left: 0;
 			position: absolute;
@@ -26,7 +23,7 @@
 			width: 100%;
 			z-index: 1;
 			}
-			.product-gallery div.image-holder div div {
+			.product-gallery div.gallery-image-holder div div {
 				float: left;
 				position: relative;
 				overflow: hidden;
@@ -51,12 +48,12 @@
 			top: 0;
 			z-index: 3;
 			}
-			.product-gallery .image-holder:hover .control-holder span {
+			.product-gallery .gallery-image-holder:hover .control-holder span {
 				display: block;
 			}
 			.product-gallery .control-holder span {
 				background-color: #fff;
-				background-image: url(cwpGallery-arrows.png);
+				background-image: url(../cwpGallery-arrows.png);
 				background-repeat: no-repeat;
 				display: none;
 				height: 30px;
@@ -87,8 +84,8 @@
 				left: 0;
 			}
 			
-		.product-gallery .image-holder .loading {
-			background: #fff url(cwpGallery-indicator.gif) no-repeat 50% 50%;
+		.product-gallery .gallery-image-holder .loading {
+			background: #fff url(../cwpGallery-indicator.gif) no-repeat 50% 50%;
 			border-radius: 4px;
 			-moz-border-radius: 4px;
 			-webkit-border-radius: 4px;
@@ -139,7 +136,7 @@
 					}
 			.thumbnail-holder .scroll-left,
 			.thumbnail-holder .scroll-right {
-				background-image: url(cwpGallery-arrows.png);
+				background-image: url(../cwpGallery-arrows.png);
 				background-repeat: no-repeat;
 				cursor: pointer;
 				display: block;
