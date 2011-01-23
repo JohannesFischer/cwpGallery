@@ -32,7 +32,8 @@ var cwpGallery = new Class({
 		enableKeys: true,
 		fxDuration: 500,
 		fxTransition: 'cubic:out',
-		scrollRange: 4
+		scrollRange: 4,
+		titleSource: 'longdesc'
 	},
 	
 	initialize: function(element, options)
@@ -59,7 +60,8 @@ var cwpGallery = new Class({
 
 	attachKeyEvents: function()
 	{
-		$(document.body).addEvent('keydown', function(e){
+		// TODO addEvent keydown doesn't work in FF
+		document.body.addEvent('keydown', function(e){
 			var key = e.key;
 
 			if(key == 'left')
@@ -127,8 +129,7 @@ var cwpGallery = new Class({
 	
 	createLoader: function()
 	{
-		this.loader = new Element('div', {
-			'class': 'loading',
+		this.loader = new Element('div.loading', {
 			styles: {
 				opacity: 0	
 			}
@@ -151,7 +152,7 @@ var cwpGallery = new Class({
 		var spacing = 0;
 
 		Object.each(styles, function(el){
-			spacing+= el.toInt();	
+			spacing+= el.toInt();
 		});
 
 		thumbnailWidth+= spacing;
@@ -189,7 +190,7 @@ var cwpGallery = new Class({
 
 	insertImage: function(image ,i)
 	{
-		var target = this.element.getElement('div');
+		var target = this.imageHolder.getElement('.images');
 
 		// insert after current image
 		if(i > this.currentImage)
@@ -197,15 +198,15 @@ var cwpGallery = new Class({
 			var styles = {
 				right: 0
 			};
-			var where = 'after';
+			var where = 'bottom';
 		}
 		// insert before current image
-		else
+		else if(i < this.currentImage || (this.curentImage == 0 && i == this.thumbnails.length))
 		{
 			var styles = {
 				left: 0
 			};
-			var where = 'before';
+			var where = 'top';
 			target.setStyle('left', this.imageHolder.getWidth() * -1);
 			target.getElement('div').setStyle('right', 0);
 		}
@@ -218,7 +219,7 @@ var cwpGallery = new Class({
 
 		target.setStyle('width', this.imageHolder.getWidth() * 2);
 
-		var left = where == 'before' ? 0 : this.imageHolder.getWidth() * -1;
+		var left = where == 'top' ? 0 : this.imageHolder.getWidth() * -1;
 
 		this.setTitle(image.getParent());
 
@@ -227,7 +228,7 @@ var cwpGallery = new Class({
 			transition: this.options.fxTransition
 		}).start('left', left).chain(function(){
 			// remove previous image
-			if(where == 'after')
+			if(where == 'bottom')
 			{
 				var div = target.getElement('div');
 			}
@@ -258,10 +259,8 @@ var cwpGallery = new Class({
 
 		this.loader.fade(1);
 
-		var target = this.imageHolder.getElement('div');
-
 		var image = new Asset.image(el.get('href'), {
-			title: el.getElement('img').get('title'),
+			title: el.getElement('img').get(this.options.titleSource),
 			onload: function(){
 				this.loader.fade(0);
 				this.setActiveThumbnail(i);
@@ -272,7 +271,11 @@ var cwpGallery = new Class({
 				}
 				else
 				{
-					new Element('div').adopt(image).inject(this.imageHolder.getElement('div'));
+					new Element('div.images').adopt(
+						new Element('div').adopt(
+							image
+						)
+					).inject(this.imageHolder, 'top');
 					this.centerImage(image);
 					this.setTitle(image.getParent());
 					this.currentImage = i;
@@ -377,7 +380,7 @@ var cwpGallery = new Class({
 		var title = image.get('title');
 		image.removeAttribute('title');
 
-		if(title != '')
+		if(title)
 		{
 			var span = new Element('span', {
 				'class': 'image-title',

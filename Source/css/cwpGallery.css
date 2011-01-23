@@ -53,7 +53,7 @@
 			}
 			.product-gallery .control-holder span {
 				background-color: #fff;
-				background-image: url(../cwpGallery-arrows.png);
+				background-image: url(../images/cwpGallery-arrows.png);
 				background-repeat: no-repeat;
 				display: none;
 				height: 30px;
@@ -85,7 +85,7 @@
 			}
 			
 		.product-gallery .gallery-image-holder .loading {
-			background: #fff url(../cwpGallery-indicator.gif) no-repeat 50% 50%;
+			background: #fff url(../images/cwpGallery-indicator.gif) no-repeat 50% 50%;
 			border-radius: 4px;
 			-moz-border-radius: 4px;
 			-webkit-border-radius: 4px;
@@ -136,7 +136,7 @@
 					}
 			.thumbnail-holder .scroll-left,
 			.thumbnail-holder .scroll-right {
-				background-image: url(../cwpGallery-arrows.png);
+				background-image: url(../images/cwpGallery-arrows.png);
 				background-repeat: no-repeat;
 				cursor: pointer;
 				display: block;
