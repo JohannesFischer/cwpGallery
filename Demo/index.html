@@ -4,80 +4,97 @@
     <title>:: cwpGallery Demo ::</title>
     <link rel="stylesheet" type="text/css" href="css/reset.css" />
     <link rel="stylesheet" type="text/css" href="../Source/css/cwpGallery.css" />
-    <script type="text/javascript" src="js/mootools-core-1.3-full-nocompat-yc.js"></script>
-    <script type="text/javascript" src="js/mootools-more.js"></script>
+    <script type="text/javascript" src="js/mootools-core-1.3.2-full-nocompat-yc.js"></script>
+    <script type="text/javascript" src="js/mootools-more-1.3.2.1.js"></script>
     <script type="text/javascript" src="../Source/js/cwpGallery.js"></script>
     <script type="text/javascript">
         window.addEvent('domready', function(){
-            $$('.product-gallery').each(function(el){
-                new cwpGallery(el, {
-                    fadeOutDisabledButtons: true,
-                    slideOpacity: .75
-                });
-            });
+			new cwpGallery($('Gallery'), {
+				fadeOutDisabledButtons: true,
+				slideOpacity: .75
+			});
         });
     </script>
 </head>
 <body>
     
-    <div class="product-gallery">
+    <div class="product-gallery" id="Gallery">
         <div class="gallery-image-holder">
-            <!--<img src="images/cwde-fotobuch-xl-details-bindung-leinen-creme.png" />-->
-        </div>
+		</div>
         <ul>
 			<li>
-				<a href="images/cwde-fotobuch-xl-details-bindung-leinen-creme.png">
-					<img src="images/cwde-fotobuch-xl-thumb-bindung-leinen-creme.png" alt="" longdesc="Write something usefull" />
+				<a href="images/bokeh-texture-free-500x375.jpg">
+					<img src="images/thumbnails/bokeh-texture-free-500x375.jpg" alt="" title="Write something usefull" />
 				</a>
 			</li>
 			<li>
-				<a href="images/cwde-fotobuch-xl-details-einband-hardcover.png">
-					<img src="images/cwde-fotobuch-xl-thumb-einband-hardcover.png" alt="" longdesc="Write something usefull" />
+				<a href="images/bokeh-textures-500x375.jpg">
+					<img src="images/thumbnails/bokeh-textures-500x375.jpg" alt="" title="Write something usefull" />
 				</a>
 			</li>
 			<li>
-				<a href="images/cwde-fotobuch-xl-details-einband-kunstleder-braun.png">
-					<img src="images/cwde-fotobuch-xl-thumb-einband-kunstleder-braun.png" alt="" longdesc="Write something usefull" />
+				<a href="images/bokeh-textures-royalty-free-images-500x375.jpg">
+					<img src="images/thumbnails/bokeh-textures-royalty-free-images-500x375.jpg" alt="" title="Write something usefull" />
 				</a>
 			</li>
 			<li>
-				<a href="images/cwde-fotobuch-xl-details-einband-kunstleder-creme.png">
-					<img src="images/cwde-fotobuch-xl-thumb-einband-kunstleder-creme.png" alt="" longdesc="Write something usefull" />
+				<a href="images/bokeh-textures-royalty-free-stock-photo-500x375.jpg">
+					<img src="images/thumbnails/bokeh-textures-royalty-free-stock-photo-500x375.jpg" alt="" title="Write something usefull" />
 				</a>
 			</li>
 			<li>
-				<a href="images/cwde-fotobuch-xl-details-einband-kunstleder-schwarz.png">                
-				    <img src="images/cwde-fotobuch-xl-thumb-einband-kunstleder-schwarz.png" />
+				<a href="images/free-bokeh-texture-500x375.jpg">
+				    <img src="images/thumbnails/free-bokeh-texture-500x375.jpg" />
 				</a>
 			</li>
 			<li>
-				<a href="images/cwde-fotobuch-xl-details-einband-leinen-blau.png">                
-					<img src="images/cwde-fotobuch-xl-thumb-einband-leinen-blau.png" alt="" longdesc="Write something usefull" />
+				<a href="images/royalty-free-images-500x375.jpg">
+					<img src="images/thumbnails/royalty-free-images-500x375.jpg" />
 				</a>
 			</li>
 			<li>
-				<a href="images/cwde-fotobuch-xl-details-einband-leinen-creme.png">                
-					<img src="images/cwde-fotobuch-xl-thumb-einband-leinen-creme.png" />
+				<a href="images/royalty-free-images-bokeh-background-500x375.jpg">
+					<img src="images/thumbnails/royalty-free-images-bokeh-background-500x375.jpg" alt="" title="Write something usefull" />
 				</a>
 			</li>
 			<li>
-				<a href="images/cwde-fotobuch-xl-details-einband-leinen-rot.png">                
-					<img src="images/cwde-fotobuch-xl-thumb-einband-leinen-rot.png" alt="" longdesc="Write something usefull" />
+				<a href="images/royalty-free-images-bokeh-textures-500x375.jpg">
+					<img src="images/thumbnails/royalty-free-images-bokeh-textures-500x375.jpg" alt="" title="Write something usefull" />
 				</a>
 			</li>
 			<li>
-				<a href="images/cwde-fotobuch-xl-details-einband-leinen-schwarz.png">                
-					<img src="images/cwde-fotobuch-xl-thumb-einband-leinen-schwarz.png" alt="" longdesc="Write something usefull" />
+				<a href="images/royalty-free-images-download-500x375.jpg">
+					<img src="images/thumbnails/royalty-free-images-download-500x375.jpg" alt="" title="Write something usefull" />
 				</a>
 			</li>
 			<li>
-				<a href="images/cwde-fotobuch-xl-details-einband-leinen-silber.png">                
-					<img src="images/cwde-fotobuch-xl-thumb-einband-leinen-silber.png" alt="" longdesc="Write something usefull" />
+				<a href="images/royalty-free-images-for-commercial-use-500x375.jpg">
+					<img src="images/thumbnails/royalty-free-images-for-commercial-use-500x375.jpg" />
 				</a>
 			</li>
 			<li>
-				<a href="images/cwde-fotobuch-xl-details-offen-hochzeit.png">
-					<img src="images/cwde-fotobuch-xl-thumb-offen-hochzeit.png" />
+				<a href="images/royalty-free-photos-500x375.jpg">
+					<img src="images/thumbnails/royalty-free-photos-500x375.jpg" />
+				</a>
+			</li>
+			<li>
+				<a href="images/stock-images-500x375.jpg">
+					<img src="images/thumbnails/stock-images-500x375.jpg" />
+				</a>
+			</li>
+			<li>
+				<a href="images/stock-photo-backgrounds-500x375.jpg">
+					<img src="images/thumbnails/stock-photo-backgrounds-500x375.jpg" />
+				</a>
+			</li>
+			<li>
+				<a href="images/stock-photo-bokeh-texture-500x375.jpg">
+					<img src="images/thumbnails/stock-photo-bokeh-texture-500x375.jpg" />
+				</a>
+			</li>
+			<li>
+				<a href="images/stock-photos-500x375.jpg">
+					<img src="images/thumbnails/stock-photos-500x375.jpg" />
 				</a>
 			</li>
         </ul>

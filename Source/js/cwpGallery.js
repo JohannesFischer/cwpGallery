@@ -33,7 +33,7 @@ var cwpGallery = new Class({
 		fxDuration: 500,
 		fxTransition: 'cubic:out',
 		scrollRange: 4,
-		titleSource: 'longdesc'
+		captionSource: 'title'
 	},
 	
 	initialize: function(element, options)
@@ -161,7 +161,9 @@ var cwpGallery = new Class({
 
 		var ul = this.element.getElement('ul');
 
-		this.thumbnailHolder = new Element('div.thumbnail-holder').adopt(ul).inject(this.element);
+		this.thumbnailHolder = new Element('div.thumbnail-holder').inject(this.element);
+
+		new Element('div').wraps(ul).inject(this.thumbnailHolder);
 
 		ul.setStyle('width', thumbnailWidth*this.thumbnails.length);
 
@@ -317,7 +319,7 @@ var cwpGallery = new Class({
 		var coordinates = {};
 		var left = to;
 
-		if(!$defined(to))
+		if(to != undefined)
 		{
 			coordinates = ul.getElement('.active').getCoordinates(ul);
 			left = (coordinates.left - center + (coordinates.width / 2).round());

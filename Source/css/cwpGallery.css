@@ -1,5 +1,7 @@
 .product-gallery {
-	background: #F2DEC1;
+	background: #eee;
+    -moz-box-shadow: 0 0 5px #666;
+    margin: 20px auto;
 	padding: 10px;
 	}
 	.product-gallery,
