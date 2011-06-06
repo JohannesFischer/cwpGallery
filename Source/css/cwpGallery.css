@@ -1,23 +1,21 @@
-.product-gallery {
-	background: #eee;
-    -moz-box-shadow: 0 0 5px #666;
-    margin: 20px auto;
+.cwpGallery {
+    margin: 20px 0;
 	padding: 10px;
 	}
-	.product-gallery,
-	.product-gallery .gallery-image-holder,
-	.product-gallery .gallery-image-holder div div {
+	.cwpGallery,
+	.cwpGallery .gallery-image-holder,
+	.cwpGallery .gallery-image-holder div div {
 		width: 600px;
 	}
-	.product-gallery div.gallery-image-holder {
+	.cwpGallery div.gallery-image-holder {
 		overflow: hidden;
 		position: relative;
 		}
-		.product-gallery .gallery-image-holder,
-		.product-gallery .gallery-image-holder div div {
+		.cwpGallery .gallery-image-holder,
+		.cwpGallery .gallery-image-holder div div {
 			height: 380px;
 		}
-		.product-gallery .gallery-image-holder .images {
+		.cwpGallery .gallery-image-holder .images {
 			height: 100%;
 			left: 0;
 			position: absolute;
@@ -25,12 +23,12 @@
 			width: 100%;
 			z-index: 1;
 			}
-			.product-gallery div.gallery-image-holder div div {
+			.cwpGallery div.gallery-image-holder div div {
 				float: left;
 				position: relative;
 				overflow: hidden;
 				}
-				.product-gallery .image-title {
+				.cwpGallery .image-title {
 					background: #fff;
 					background: rgba(255, 255, 255, .7);
 					color: #626262;
@@ -38,22 +36,22 @@
 					overflow: hidden;
 					position: absolute;
 					}
-					.product-gallery .image-title span {
+					.cwpGallery .image-title span {
 						display: block;
 						margin: 6px 8px;
 					}
 
-		.product-gallery .control-holder {
+		.cwpGallery .control-holder {
 			cursor: pointer;
 			height: 100%;
 			position: absolute;
 			top: 0;
 			z-index: 3;
 			}
-			.product-gallery .gallery-image-holder:hover .control-holder span {
+			.cwpGallery .gallery-image-holder:hover .control-holder span {
 				display: block;
 			}
-			.product-gallery .control-holder span {
+			.cwpGallery .control-holder span {
 				background-color: #fff;
 				background-image: url(../images/cwpGallery-arrows.png);
 				background-repeat: no-repeat;
@@ -65,7 +63,7 @@
 				width: 30px;
 				z-index: 2;
 			}
-			.product-gallery .control-next {
+			.cwpGallery .control-next {
 				background-position: 8px -149px;
 				border-radius: 4px 0 0 4px;
 				-moz-border-radius: 4px 0 0 4px;
@@ -75,7 +73,7 @@
 				-webkit-box-shadow: -1px 1px 2px rgba(100, 100, 100, .7);
 				right: 0;
 			}
-			.product-gallery .control-previous {
+			.cwpGallery .control-previous {
 				background-position: 8px -39px;
 				border-radius: 0 4px 4px 0;
 				-moz-border-radius: 0 4px 4px 0;
@@ -86,7 +84,7 @@
 				left: 0;
 			}
 			
-		.product-gallery .gallery-image-holder .loading {
+		.cwpGallery .gallery-image-holder .loading {
 			background: #fff url(../images/cwpGallery-indicator.gif) no-repeat 50% 50%;
 			border-radius: 4px;
 			-moz-border-radius: 4px;
@@ -110,30 +108,30 @@
 		}
 		div.thumbnail-holder,
 		.thumbnail-holder div {
-			height: 110px;
+			height: 60px;
 		}
 		.thumbnail-holder div {
 			margin: 0 20px;
 			overflow: hidden;
 			position: relative;
 		}
-		.thumbnail-holder ul {
+		.cwpGallery ul {
 			left: 0;
 			list-style: none;
 			margin: 0;
 			position: absolute;
 			top: 0;
 			}
-			.thumbnail-holder li {
+			.cwpGallery li {
 				background: #aaa;
 				float: left;
 				margin: 0 5px 0 0;
 				padding: 2px;
 				}
-				.thumbnail-holder li.active {
+				.cwpGallery li.active {
 					background: #333;
 					}
-					.thumbnail-holder li img {
+					.cwpGallery li img {
 						display: block;
 					}
 			.thumbnail-holder .scroll-left,
@@ -142,17 +140,17 @@
 				background-repeat: no-repeat;
 				cursor: pointer;
 				display: block;
-				height: 110px;
+				height: 100%;
 				position: absolute;
 				top: 0;
 				width: 16px;
 			}
 			.thumbnail-holder .scroll-left {
-				background-position: top left;
+				background-position: left -25px;
 				left: 0;
 			}
 			.thumbnail-holder .scroll-right {
-				background-position: bottom left;
+				background-position: left -135px;
 				right: 0;
 			}
 			

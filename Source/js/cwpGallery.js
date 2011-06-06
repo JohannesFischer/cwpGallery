@@ -29,14 +29,14 @@ var cwpGallery = new Class({
 
 	options: {
 		animateTitle: true,
+		captionSource: 'title',
 		enableKeys: true,
 		fxDuration: 500,
 		fxTransition: 'cubic:out',
-		scrollRange: 4,
-		captionSource: 'title'
+		scrollRange: 4
 	},
 	
-	initialize: function(element, options)
+	initialize: function (element, options)
 	{
 		this.element = $(element);
 		// Image container
@@ -44,6 +44,7 @@ var cwpGallery = new Class({
 		// Thumbnail container
 		this.thumbnailHolder = null;
 		// List elements
+		this.thumbnailList = this.element.getElement('ul');
 		this.thumbnails = this.element.getElements('li');
 
 		this.setOptions(options);
@@ -51,31 +52,32 @@ var cwpGallery = new Class({
 		this.createControls();
 		this.initThumbnails();
 		this.createLoader();
-		if(this.options.enableKeys)
+
+		if (this.options.enableKeys)
 		{
 			this.attachKeyEvents();
 		}
 		this.loadImage(this.thumbnails[0].getElement('a'), 0);
 	},
 
-	attachKeyEvents: function()
+	attachKeyEvents: function ()
 	{
 		// TODO addEvent keydown doesn't work in FF
-		document.body.addEvent('keydown', function(e){
+		document.body.addEvent('keydown', function (e) {
 			var key = e.key;
 
-			if(key == 'left')
+			if (key == 'left')
 			{
 				this.previous();
 			}
-			if(key == 'right')
+			if (key == 'right')
 			{
 				this.next();
 			}
 		}.bind(this));
 	},
 	
-	centerImage: function(image)
+	centerImage: function (image)
 	{
 		var imageSize = image.getSize();
 		var parentSize = image.getParent().getSize();
@@ -88,14 +90,14 @@ var cwpGallery = new Class({
 		});
 	},
 	
-	createControls: function()
+	createControls: function ()
 	{
 		var width = (this.imageHolder.getWidth() / 3).round();
 
 		new Element('span', {
 			'class': 'control-holder',
 			events: {
-				click: function(){
+				click: function () {
 					this.previous();	
 				}.bind(this)
 			},
@@ -112,7 +114,7 @@ var cwpGallery = new Class({
 		new Element('span', {
 			'class': 'control-holder',
 			events: {
-				click: function(){
+				click: function () {
 					this.next();	
 				}.bind(this)
 			},
@@ -127,7 +129,7 @@ var cwpGallery = new Class({
 		).inject(this.imageHolder);
 	},
 	
-	createLoader: function()
+	createLoader: function ()
 	{
 		this.loader = new Element('div.loading', {
 			styles: {
@@ -136,38 +138,35 @@ var cwpGallery = new Class({
 		}).inject(this.imageHolder);
 	},
 	
-	initThumbnails: function()
+	initThumbnails: function ()
 	{
-		this.thumbnails.getElements('a').each(function(el, i){
-			el.addEvent('click', function(e){
+		var styles,
+			width = 0;
+
+		this.thumbnails.getElements('a').each(function (el, i) {
+			el.addEvent('click', function (e) {
 				e.stop();
 				this.loadImage(el, i);
 			}.bind(this));
 		}, this);
 
-		var thumbnailWidth = this.thumbnails[0].getElement('a').getWidth();
+		this.thumbnails.getElement('a').each(function (el) {
+			width += el.getWidth();
+		});
 
 		var styles = this.thumbnails[0].getStyles('margin-left', 'margin-right', 'padding-left', 'padding-right');
 
-		var spacing = 0;
+		Object.each(styles, function (el) {
+			width += el.toInt() * this.thumbnails.length;
+		}, this);
 
-		Object.each(styles, function(el){
-			spacing+= el.toInt();
-		});
-
-		thumbnailWidth+= spacing;
-
-		this.thumbnails[0].store('spacing', spacing);
-
-		var ul = this.element.getElement('ul');
+		this.thumbnailList.setStyle('width', width);
 
 		this.thumbnailHolder = new Element('div.thumbnail-holder').inject(this.element);
 
-		new Element('div').wraps(ul).inject(this.thumbnailHolder);
+		new Element('div').wraps(this.thumbnailList).inject(this.thumbnailHolder);
 
-		ul.setStyle('width', thumbnailWidth*this.thumbnails.length);
-
-		if(thumbnailWidth*this.thumbnails.length < ul.getParent().getWidth())
+		if (width < this.thumbnailList.getParent().getWidth())
 		{
 			this.disableScrolling = true;
 			return;
@@ -175,7 +174,7 @@ var cwpGallery = new Class({
 
 		var leftControl = new Element('span.scroll-left', {
 			events: {
-				click: function(){
+				click: function () {
 					this.scrollThumbnails(leftControl);
 				}.bind(this)
 			}
@@ -183,32 +182,34 @@ var cwpGallery = new Class({
 
 		var controlRight = new Element('span.scroll-right', {
 			events: {
-				click: function(){
+				click: function () {
 					this.scrollThumbnails(controlRight);
 				}.bind(this)
 			}
 		}).inject(this.thumbnailHolder);
 	},
 
-	insertImage: function(image ,i)
+	insertImage: function (image ,i)
 	{
-		var target = this.imageHolder.getElement('.images');
+		var target = this.imageHolder.getElement('.images'),
+			styles,
+			where;
 
 		// insert after current image
-		if(i > this.currentImage)
+		if (i > this.currentImage)
 		{
-			var styles = {
+			styles = {
 				right: 0
 			};
-			var where = 'bottom';
+			where = 'bottom';
 		}
 		// insert before current image
-		else if(i < this.currentImage || (this.curentImage == 0 && i == this.thumbnails.length))
+		else if (i < this.currentImage || (this.curentImage == 0 && i == this.thumbnails.length))
 		{
-			var styles = {
+			styles = {
 				left: 0
 			};
-			var where = 'top';
+			where = 'top';
 			target.setStyle('left', this.imageHolder.getWidth() * -1);
 			target.getElement('div').setStyle('right', 0);
 		}
@@ -228,9 +229,9 @@ var cwpGallery = new Class({
 		new Fx.Tween(target, {
 			duration: this.options.fxDuration,
 			transition: this.options.fxTransition
-		}).start('left', left).chain(function(){
+		}).start('left', left).chain(function () {
 			// remove previous image
-			if(where == 'bottom')
+			if (where == 'bottom')
 			{
 				var div = target.getElement('div');
 			}
@@ -250,9 +251,9 @@ var cwpGallery = new Class({
 		}.bind(this));
 	},
 
-	loadImage: function(el, i)
+	loadImage: function (el, i)
 	{
-		if(i == this.currentImage || this.busy)
+		if (i == this.currentImage || this.busy)
 		{
 			return;
 		}
@@ -263,11 +264,11 @@ var cwpGallery = new Class({
 
 		var image = new Asset.image(el.get('href'), {
 			title: el.getElement('img').get(this.options.titleSource),
-			onload: function(){
+			onload: function () {
 				this.loader.fade(0);
 				this.setActiveThumbnail(i);
 
-				if(this.initialized)
+				if (this.initialized)
 				{
 					this.insertImage(image, i);
 				}
@@ -285,71 +286,69 @@ var cwpGallery = new Class({
 					this.initialized = true;
 				}
 			}.bind(this)
-		})
+		});
 	},
 	
-	next: function()
+	next: function ()
 	{
 		var i = this.currentImage + 1;
-		if(i >= this.thumbnails.length)
+		if (i >= this.thumbnails.length)
 		{
 			i = 0;
 		}
 		this.loadImage(this.thumbnails[i].getElement('a'), i);
 	},
 
-	previous: function()
+	previous: function ()
 	{
 		var i = this.currentImage - 1;
-		if(i < 0)
+		if (i < 0)
 		{
 			i = this.thumbnails.length - 1;
 		}
 		this.loadImage(this.thumbnails[i].getElement('a'), i);
 	},
 	
-	scroll: function(to)
+	scroll: function (to)
 	{
-		var ul = this.thumbnailHolder.getElement('ul');
-
 		// center thumbnail
 		var center = (this.thumbnailHolder.getElement('div').getWidth() / 2).round();
-		var limit = (ul.getWidth() - (center * 2) - this.thumbnails[0].retrieve('spacing'));
+		var limit = (this.thumbnailList.getWidth() - (center * 2) - this.thumbnails[0].retrieve('spacing'));
 
 		var coordinates = {};
 		var left = to;
 
-		if(to != undefined)
+		if (to != undefined)
 		{
-			coordinates = ul.getElement('.active').getCoordinates(ul);
+			coordinates = this.thumbnailList.getElement('.active').getCoordinates(this.thumbnailList);
 			left = (coordinates.left - center + (coordinates.width / 2).round());
 		}
-		if(coordinates.left < center || to < 0)
+		if (coordinates.left < center || to < 0)
 		{
 			left = 0;
 		}
-		else if(left >= limit)
+		else if (left >= limit)
 		{
 			left = limit;
 		}
 
-		if(left != ul.getStyle('left').toInt())
+		if (left !== this.thumbnailList.getStyle('left').toInt())
 		{
-			new Fx.Tween(ul, {
+			new Fx.Tween(this.thumbnailList, {
 				duration: 500,
 				transition: 'quart:out'
 			}).start('left', left * -1);
 		}
 	},
 	
-	scrollThumbnails: function(el)
+	scrollThumbnails: function (el)
 	{
-		var ul = this.thumbnailHolder.getElement('ul');
+		var left;
 
-		var thumbnailWidth = this.thumbnails[0].getWidth() + this.thumbnails[0].retrieve('spacing');		
-		var left = ul.getStyle('left').toInt() *-1;
+		var thumbnailWidth = this.thumbnails[0].getWidth();
+		left = this.thumbnailList.getStyle('left').toInt() * -1;
 		
-		if(el.get('class').test('left'))
+		if (el.get('class').test('left'))
 		{
 			this.scroll(left - (thumbnailWidth * this.options.scrollRange));
 		}
@@ -359,37 +358,37 @@ var cwpGallery = new Class({
 		}
 	},
 	
-	setActiveThumbnail: function(i)
+	setActiveThumbnail: function (i)
 	{
 		var active = this.thumbnailHolder.getElement('.active');
 
-		if(active)
+		if (active)
 		{
 			active.removeClass('active');
 		}
 
 		this.thumbnails[i].addClass('active');
 
-		if(!this.disableScrolling)
+		if (!this.disableScrolling)
 		{
 			this.scroll();
 		}
 	},
 
-	setTitle: function(target)
+	setTitle: function (target)
 	{
 		var image = target.getElement('img');
 		var title = image.get('title');
 		image.removeAttribute('title');
 
-		if(title)
+		if (title)
 		{
 			var span = new Element('span', {
 				'class': 'image-title',
-				html: '<span>'+title+'</span>'
+				html: '<span>' + title + '</span>'
 			}).inject(target);
 
-			if(this.options.animateTitle)
+			if (this.options.animateTitle)
 			{
 				var imageCoordinates = image.getCoordinates(target);
 
