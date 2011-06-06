@@ -66,11 +66,11 @@ var cwpGallery = new Class({
 		document.body.addEvent('keydown', function (e) {
 			var key = e.key;
 
-			if (key == 'left')
+			if (key === 'left')
 			{
 				this.previous();
 			}
-			if (key == 'right')
+			if (key === 'right')
 			{
 				this.next();
 			}
@@ -79,8 +79,8 @@ var cwpGallery = new Class({
 	
 	centerImage: function (image)
 	{
-		var imageSize = image.getSize();
-		var parentSize = image.getParent().getSize();
+		var imageSize = image.getSize(),
+			parentSize = image.getParent().getSize();
 
 		// TODO hoehe des Titles von margin-top abziehen, wenn animation deaktiviert ist
 
@@ -141,6 +141,8 @@ var cwpGallery = new Class({
 	initThumbnails: function ()
 	{
 		var styles,
+			leftControl,
+			rightControl,
 			width = 0;
 
 		this.thumbnails.getElements('a').each(function (el, i) {
@@ -154,7 +156,7 @@ var cwpGallery = new Class({
 			width += el.getWidth();
 		});
 
-		var styles = this.thumbnails[0].getStyles('margin-left', 'margin-right', 'padding-left', 'padding-right');
+		styles = this.thumbnails[0].getStyles('margin-left', 'margin-right', 'padding-left', 'padding-right');
 
 		Object.each(styles, function (el) {
 			width += el.toInt() * this.thumbnails.length;
@@ -172,7 +174,7 @@ var cwpGallery = new Class({
 			return;
 		}
 
-		var leftControl = new Element('span.scroll-left', {
+		leftControl = new Element('span.scroll-left', {
 			events: {
 				click: function () {
 					this.scrollThumbnails(leftControl);
@@ -180,18 +182,20 @@ var cwpGallery = new Class({
 			}
 		}).inject(this.thumbnailHolder);
 
-		var controlRight = new Element('span.scroll-right', {
+		rightControl = new Element('span.scroll-right', {
 			events: {
 				click: function () {
-					this.scrollThumbnails(controlRight);
+					this.scrollThumbnails(rightControl);
 				}.bind(this)
 			}
 		}).inject(this.thumbnailHolder);
 	},
 
-	insertImage: function (image ,i)
+	insertImage: function (image, i)
 	{
-		var target = this.imageHolder.getElement('.images'),
+		var div,
+			left,
+			target = this.imageHolder.getElement('.images'),
 			styles,
 			where;
 
@@ -204,7 +208,7 @@ var cwpGallery = new Class({
 			where = 'bottom';
 		}
 		// insert before current image
-		else if (i < this.currentImage || (this.curentImage == 0 && i == this.thumbnails.length))
+		else if (i < this.currentImage || (this.curentImage === 0 && i === this.thumbnails.length))
 		{
 			styles = {
 				left: 0
@@ -222,7 +226,7 @@ var cwpGallery = new Class({
 
 		target.setStyle('width', this.imageHolder.getWidth() * 2);
 
-		var left = where == 'top' ? 0 : this.imageHolder.getWidth() * -1;
+		left = where === 'top' ? 0 : this.imageHolder.getWidth() * -1;
 
 		this.setTitle(image.getParent());
 
@@ -231,13 +235,13 @@ var cwpGallery = new Class({
 			transition: this.options.fxTransition
 		}).start('left', left).chain(function () {
 			// remove previous image
-			if (where == 'bottom')
+			if (where === 'bottom')
 			{
-				var div = target.getElement('div');
+				div = target.getElement('div');
 			}
 			else
 			{
-				var div = target.getElements('div')[1];
+				div = target.getElements('div')[1];
 			}
 			div.dispose();
 
@@ -253,7 +257,7 @@ var cwpGallery = new Class({
 
 	loadImage: function (el, i)
 	{
-		if (i == this.currentImage || this.busy)
+		if (i === this.currentImage || this.busy)
 		{
 			return;
 		}
@@ -311,18 +315,20 @@ var cwpGallery = new Class({
 	
 	scroll: function (to)
 	{
-		// center thumbnail
-		var center = (this.thumbnailHolder.getElement('div').getWidth() / 2).round();
-		var limit = (this.thumbnailList.getWidth() - (center * 2) - this.thumbnails[0].retrieve('spacing'));
+		var center,
+			coordinates = {},
+			left = to,
+			limit;
 
-		var coordinates = {};
-		var left = to;
+		center = (this.thumbnailHolder.getElement('div').getWidth() / 2).round();
+		limit = (this.thumbnailList.getWidth() - (center * 2));
 
-		if (to != undefined)
+		if (to === undefined)
 		{
 			coordinates = this.thumbnailList.getElement('.active').getCoordinates(this.thumbnailList);
 			left = (coordinates.left - center + (coordinates.width / 2).round());
 		}
+
 		if (coordinates.left < center || to < 0)
 		{
 			left = 0;
@@ -343,10 +349,8 @@ var cwpGallery = new Class({
 	
 	scrollThumbnails: function (el)
 	{
-		var left;
-
-		var thumbnailWidth = this.thumbnails[0].getWidth();
-		left = this.thumbnailList.getStyle('left').toInt() * -1;
+		var left = this.thumbnailList.getStyle('left').toInt() * -1,
+			thumbnailWidth = this.thumbnails[0].getWidth();
 		
 		if (el.get('class').test('left'))
 		{
@@ -377,20 +381,23 @@ var cwpGallery = new Class({
 
 	setTitle: function (target)
 	{
-		var image = target.getElement('img');
-		var title = image.get('title');
+		var image = target.getElement('img'),
+			imageCoordinates,
+			span,
+			title = image.get('title');
+
 		image.removeAttribute('title');
 
 		if (title)
 		{
-			var span = new Element('span', {
+			span = new Element('span', {
 				'class': 'image-title',
 				html: '<span>' + title + '</span>'
 			}).inject(target);
 
 			if (this.options.animateTitle)
 			{
-				var imageCoordinates = image.getCoordinates(target);
+				imageCoordinates = image.getCoordinates(target);
 
 				span.setStyles({
 					bottom: imageCoordinates.top,
