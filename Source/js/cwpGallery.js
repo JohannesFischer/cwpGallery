@@ -28,12 +28,13 @@ var cwpGallery = new Class({
 	initialized: false,
 
 	options: {
-		animateTitle: true,
-		captionSource: 'title',
+		animateTitle: true, // not working
+		captionSource: 'title', // not working
 		enableKeys: true,
 		fxDuration: 500,
 		fxTransition: 'cubic:out',
-		scrollRange: 4
+		scrollRange: 4,
+		slideOpacity: 0.75  // not implemented
 	},
 	
 	initialize: function (element, options)
@@ -384,7 +385,7 @@ var cwpGallery = new Class({
 		var image = target.getElement('img'),
 			imageCoordinates,
 			span,
-			title = image.get('title');
+			title = image.get(this.options.captionSource);
 
 		image.removeAttribute('title');
 
