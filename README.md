@@ -3,12 +3,12 @@ Nivoo-Slider
 
 The Nivoo-Slider is an image gallery based on the jQuery Plugin NivoSlider (http://nivo.dev7studios.com/). It features 18 different transition effects.
 
-![Screenshot 1](http://www.johannes-fischer.de/assets/Labs/nivoo-slider.png)
+![Screenshot 1](http://www.johannes-fischer.de/assets/Labs/labs-cwpGallery.png)
 
 How to use
 ----------
 
-Just include NivooSider.js and the NivooSlider.css to your site:
+Just include cwpGallery.js and cwpGallery.css to your site:
 
 #HTML
 	<script type="text/javascript" src="js/cwpGallery.js"></script>
@@ -44,12 +44,12 @@ And the gallery structure:
             </li>
             <li>
                 <a href="images/free-bokeh-texture-500x375.jpg">
-                    <img src="images/thumbnails/free-bokeh-texture-500x375.jpg" />
+                    <img src="images/thumbnails/free-bokeh-texture-500x375.jpg" height="50" width="67" />
                 </a>
             </li>
             <li>
                 <a href="images/royalty-free-images-500x375.jpg">
-                    <img src="images/thumbnails/royalty-free-images-500x375.jpg" />
+                    <img src="images/thumbnails/royalty-free-images-500x375.jpg" height="50" width="67" />
                 </a>
             </li>
         </ul>
@@ -84,17 +84,10 @@ Documentation
 2. options - (object, optional) The cwpGallery options object, described below:
 
 #### Options ####
-- animSpeed - (number: defaults to 500) The time (duration) in ms of the transition
-- autoPlay - (bool: defaults to true) Start the transition automatically after initializing
-- cssClass - (string, defaults to nivooSlider) Name of the css class that is added after initializing the slider
-- directionNav -(bool: deafults to true) Shows controls to go back and forth
-- directionNavHide - (bool: defaults to false) Hides the navigation controls on mouseout, so they are only visible when the mouse cursor is over the slider element
-- directionNavWidth - (number,string: defaults to 20%) Width of the clickable area of the directional navigation. Can be a number for pixels or a string with a percentage of the full width.
-- effect - (string: defaults to sliceDown) Type of transition (see effects),
-- interval - (number: defaults to 3000) Interval in ms between the transitions, required for the autoPlay function
-- orientation - (string: defaults to vertical) Defines the direction of the transition, can be horizontal or vertical
-- pauseOnHover - (bool: defaults to true) Clears the interval on mouseover
-- slices - (number: defaults to 15) Number of the slices used for the transition
+- enableKeys - (bool: default is true)
+- fxDuration - (int: default is 500)
+- fxTransition -(string: dfault is cubic:out)
+- scrollRange - (number: default is 4) 
 
 License
 -------
