@@ -64,7 +64,7 @@ var cwpGallery = new Class({
 	attachKeyEvents: function ()
 	{
 		// TODO addEvent keydown doesn't work in FF
-		document.body.addEvent('keydown', function (e) {
+		$(document.body).addEvent('keydown', function (e) {
 			var key = e.key;
 
 			if (key === 'left')
