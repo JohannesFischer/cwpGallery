@@ -174,6 +174,8 @@ var cwpGallery = new Class({
 			this.disableScrolling = true;
 			return;
 		}
+		
+		this.thumbnailHolder.getElement('div').addClass('scrolling');
 
 		leftControl = new Element('span.scroll-left', {
 			events: {

@@ -111,10 +111,12 @@
 			height: 60px;
 		}
 		.cwpGallery .thumbnail-holder div {
-			margin: 0 20px;
 			overflow: hidden;
 			position: relative;
 		}
+        .cwpGallery .thumbnail-holder div.scrolling {
+            margin: 0 20px;
+        }
 		.cwpGallery ul {
 			left: 0;
 			list-style: none;
